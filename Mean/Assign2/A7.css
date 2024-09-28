@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 10px;
+  position: relative;
+  background: url("https://www.codingnepalweb.com/demos/create-glassmorphism-login-form-html-css/hero-bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.wrapper {
+  width: 700px;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background for better contrast */
+  color: #fff;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  position: relative;
+  border-bottom: 2px solid #fff;
+  margin: 15px 0;
+  display: none; /* Hide all fields by default */
+}
+
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.15s ease;
+}
+
+.input-field input,
+.input-field select {
+  width: 100%;
+  height: 40px;
+  background: #333; /* Dark background for input fields */
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #fff; /* White text for better contrast */
+  padding: 0 10px;
+  border-radius: 4px;
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label,
+.input-field select:focus~label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-120%);
+}
+
+button {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+  margin-top: 20px;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.result-box {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}

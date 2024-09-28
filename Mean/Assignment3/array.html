@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Array Elements</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 20px 0;
+            margin-bottom: 50px;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            background-color: #333;
+            cursor: pointer;
+        }
+        p {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .error {
+            color: red;
+        }
+        ul {
+            padding: 10px;
+            list-style-type: disc; /* Ensure bullets are shown */
+            text-align: left; /* Align bullets to the left */
+            margin: 0 auto;
+            width: 300px;
+        }
+        li {
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body ng-app="arrayApp" ng-controller="ArrayController">
+    <h1>Array Elements</h1>
+    <input type="text" ng-model="newItem" placeholder="Enter new item">
+    <button ng-click="addItem()">Add Item</button>
+    <p class="error" ng-if="!array.length">No elements in array</p>
+    <ul>
+        <li ng-repeat="item in array track by $index">{{ item }}</li>
+    </ul>
+
+    <script>
+        angular.module('arrayApp', []).controller('ArrayController', function ($scope) {
+            $scope.array = [];
+            $scope.addItem = function() {
+                if ($scope.newItem) {
+                    $scope.array.push($scope.newItem);
+                    $scope.newItem = '';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

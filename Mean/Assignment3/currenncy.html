@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 10px 0;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            width: 200px;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body ng-app="currencyApp" ng-controller="CurrencyController">
+    <h1>Currency Calculator</h1>
+    <label for="inr">Enter Amount in INR:</label>
+    <input type="number" ng-model="inr" id="inr">
+    
+    <p>Dollars: {{ inr * 0.012 }}</p>
+    <p>Euros: {{ inr * 0.011 }}</p>
+    
+    <script>
+        angular.module('currencyApp', []).controller('CurrencyController', function ($scope) {
+            $scope.inr = 0;
+        });
+    </script>
+</body>
+</html>

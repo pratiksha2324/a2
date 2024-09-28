@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Order Form</title>
+    <link rel="stylesheet" href="A2.css">
+</head>
+
+<body>
+    <div class="book-container">
+        <!-- Book 1 -->
+        <div class="book-details">
+            <img id="book-image-1" src="IMAGES/book1.jpg" alt="Harry Potter and the Sorcerer's Stone" onclick="showBookTopics(1)">
+            <h2>Harry Potter and the Sorcerer's Stone</h2>
+            <p id="book-description-1">The first book in J.K. Rowling's beloved Harry Potter series, where a young boy discovers he is a wizard and attends Hogwarts School of Witchcraft and Wizardry.</p>
+            <div id="book-topics-1" style="display: none;">
+                <h3>Topics Covered:</h3>
+                <ul>
+                    <li>Magic and Wizardry</li>
+                    <li>Friendship and Loyalty</li>
+                    <li>Good vs. Evil</li>
+                    <li>Self-Discovery</li>
+                </ul>
+            </div>
+            <div id="book-reviews-1">
+                <h3>Reviews:</h3>
+                <div class="review">
+                    <span class="star-rating">★★★★★</span>
+                    <p><strong>John Doe:</strong> A magical start to an unforgettable journey.</p>
+                </div>
+                <div class="review">
+                    <span class="star-rating">★★★★☆</span>
+                    <p><strong>Jane Smith:</strong> A world full of wonder and adventure, perfect for all ages.</p>
+                </div>
+                <div class="review">
+                    <span class="star-rating">★★★★★</span>
+                    <p><strong>Emily Johnson:</strong> The book that started it all—simply enchanting.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="book-details">
+            <img id="book-image-2" src="IMAGES/book2.jpg" alt="Percy Jackson & the Olympians: The Lightning Thief" onclick="showBookTopics(2)">
+            <h2>Percy Jackson & the Olympians: The Lightning Thief</h2>
+            <p id="book-description-2">Rick Riordan's novel introduces Percy Jackson, a demigod discovering his heritage as the son of Poseidon, and embarking on a thrilling quest to prevent a war among the gods.</p>
+            <div id="book-topics-2" style="display: none;">
+                <h3>Topics Covered:</h3>
+                <ul>
+                    <li>Greek Mythology</li>
+                    <li>Adventure and Quest</li>
+                    <li>Friendship and Bravery</li>
+                    <li>Identity and Heritage</li>
+                </ul>
+            </div>
+            <div id="book-reviews-2">
+                <h3>Reviews:</h3>
+                <div class="review">
+                    <span class="star-rating">★★★★★</span>
+                    <p><strong>Michael Brown:</strong> A fantastic blend of myth and modern-day adventure.</p>
+                </div>
+                <div class="review">
+                    <span class="star-rating">★★★★☆</span>
+                    <p><strong>Linda Williams:</strong> An exciting, fast-paced journey into Greek mythology.</p>
+                </div>
+                <div class="review">
+                    <span class="star-rating">★★★★★</span>
+                    <p><strong>Christopher Jones:</strong> Riordan's witty storytelling keeps you hooked from the start.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="book-details">
+            <img id="book-image-3" src="IMAGES/book3.jpg" alt="The Chronicles of Narnia: The Lion, the Witch and the Wardrobe" onclick="showBookTopics(3)">
+            <h2>The Chronicles of Narnia: The Lion, the Witch and the Wardrobe</h2>
+            <p id="book-description-3">C.S. Lewis's classic tale of four children who discover a magical world inside a wardrobe, where they join the battle against the evil White Witch to free Narnia.</p>
+            <div id="book-topics-3" style="display: none;">
+                <h3>Topics Covered:</h3>
+                <ul>
+                    <li>Fantasy and Magic</li>
+                    <li>Good vs. Evil</li>
+                    <li>Courage and Sacrifice</li>
+                    <li>Faith and Redemption</li>
+                </ul>
+            </div>
+            <div id="book-reviews-3">
+                <h3>Reviews:</h3>
+                <div class="review">
+                    <span class="star-rating">★★★★★</span>
+                    <p><strong>Sarah Wilson:</strong> A timeless adventure filled with magic and wonder.</p>
+                </div>
+                <div class="review">
+                    <span class="star-rating">★★★★☆</span>
+                    <p><strong>Jessica Martinez:</strong> A beautifully written allegory with deep themes.</p>
+                </div>
+                <div class="review">
+                    <span class="star-rating">★★★★★</span>
+                    <p><strong>David Lee:</strong> A delightful escape into a richly imagined world.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="order-form">
+        <h2>Order Details</h2>
+    
+        <label for="customer-name">Name:</label>
+        <input type="text" id="customer-name" name="customer-name" required>
+        <div id="name-error" class="error-message"></div> <!-- Error message div for name -->
+    
+        <label for="customer-address">Address:</label>
+        <textarea id="customer-address" name="customer-address" required></textarea>
+        <div id="address-error" class="error-message"></div> <!-- Error message div for address -->
+    
+        <label for="payment-details">Payment Details:</label>
+        <input type="text" id="payment-details" name="payment-details" required>
+        <div id="payment-error" class="error-message"></div> <!-- Error message div for payment details -->
+    
+        <label for="number-of-copies">Number of Copies:</label>
+        <input type="number" id="number-of-copies" name="number-of-copies" min="1" required>
+        <div id="copies-error" class="error-message"></div> <!-- Error message div for number of copies -->
+    
+        <button type="button" onclick="submitOrder()">Place Order</button>
+    </form>
+    
+    <div id="order-response" style="display: none;">
+        <h2>Order Status</h2>
+        <p id="order-status"></p>
+    </div>
+    
+    
+
+    <script src="A2.js"></script>
+</body>
+
+</html>

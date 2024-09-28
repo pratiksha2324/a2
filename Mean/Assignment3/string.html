@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Concatenation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 20px 0;
+            margin-bottom: 50px;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        p {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .error {
+            color: red;
+        }
+        .result {
+            background-color: #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body ng-app="stringApp" ng-controller="StringController">
+    <h1>String Concatenation</h1>
+    <input type="text" ng-model="string1" placeholder="Enter first string">
+    <input type="text" ng-model="string2" placeholder="Enter second string">
+    <p class="error" ng-if="!string1.length || !string2.length">Enter both strings first</p>
+    <p class="result" ng-if="string1.length && string2.length">Concatenated String: {{ string1 + string2 }}</p>
+    
+    <script>
+        angular.module('stringApp', []).controller('StringController', function ($scope) {
+            $scope.string1 = '';
+            $scope.string2 = '';
+        });
+    </script>
+</body>
+</html>

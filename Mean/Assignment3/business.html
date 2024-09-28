@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html ng-app="palworldApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Palworld Merchandise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- Palworld-style font -->
+    <style>
+        /* General Body Styles */
+        body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #1b1e25; /* Darker, more sophisticated background */
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+        /* Header Styling */
+        header {
+            background-color: #222831;
+            color: #f9f9f9;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid #393e46;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Navigation Styling */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #393e46;
+            padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            color: #eeeeee;
+            padding: 15px 25px;
+            text-decoration: none;
+            text-align: center;
+            margin: 0 5px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #00adb5;
+            color: #1b1e25;
+        }
+
+        /* Main Content Styling */
+        .content {
+    flex: 1; /* Allow the content to expand to fill available space */
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: #222831;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+        .content h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #00adb5;
+        }
+
+        .merchandise-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .merch-item {
+            background-color: #393e46;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 220px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: #eeeeee;
+        }
+
+        .merch-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+
+        .merch-item h4 {
+            margin: 10px 0;
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #00adb5;
+        }
+
+        .merch-item p {
+            font-size: 14px;
+        }
+
+        .merch-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 173, 181, 0.5);
+        }
+
+        .merch-item:hover img {
+            transform: scale(1.1);
+        }
+
+   
+        footer {
+    background-color: #222831;
+    color: #f9f9f9;
+    text-align: center;
+    padding: 15px 0;
+    border-top: 3px solid #393e46;
+}
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body ng-controller="MainController">
+    <header>
+        <h1>Palworld Merchandise</h1>
+    </header>
+
+    <nav>
+        <a href="#" ng-click="view = 'home'">Home</a>
+        <a href="#" ng-click="view = 'policies'">Policies</a>
+        <a href="#" ng-click="view = 'about'">About Us</a>
+        <a href="#" ng-click="view = 'contact'">Contact Us</a>
+    </nav>
+
+    <div class="content">
+        <!-- Home Section: Palworld Merchandise -->
+        <div ng-show="view === 'home'">
+            <h2>Palworld Merchandise</h2>
+            <p>Discover the latest and coolest merchandise for all Palworld fans!</p>
+            <div class="merchandise-container">
+                <div class="merch-item" ng-repeat="item in merchandise">
+                    <img ng-src="{{ item.image }}" alt="{{ item.name }}">
+                    <h4>{{ item.name }}</h4>
+                    <p>{{ item.price }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Policies Section -->
+        <div ng-show="view === 'policies'">
+            <h2>Our Policies</h2>
+            <p>Read about our policies for returns, exchanges, and privacy:</p>
+            <ul>
+                <li><strong>Return Policy:</strong> Items can be returned within 30 days of purchase.</li>
+                <li><strong>Exchange Policy:</strong> Exchanges are accepted within 15 days of delivery.</li>
+                <li><strong>Privacy Policy:</strong> We prioritize your data security and privacy.</li>
+            </ul>
+        </div>
+
+        <!-- About Us Section -->
+        <div ng-show="view === 'about'">
+            <h2>About Palworld</h2>
+            <p>Palworld is a fantasy-themed adventure game with unique creatures and experiences. Our merchandise is made
+                to connect fans with the world of Palworld!</p>
+        </div>
+
+        <!-- Contact Us Section -->
+        <div ng-show="view === 'contact'">
+            <h2>Contact Us</h2>
+            <br>
+            <p>If you have any questions, feel free to reach out:</p><br>
+            <p><strong>Email:</strong> support_palworld@pocketpair.jp</p><br>
+            
+            <p><strong>Address:</strong> Higashigotanda Square Building, 2-10-2 Higashigotanda, Shinagawa-ku, Tokyo 141-0022</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Palworld Merchandise. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        angular.module('palworldApp', []).controller('MainController', function ($scope) {
+            $scope.view = 'home'; // Default view is 'home'
+
+            // Sample merchandise data
+            $scope.merchandise = [
+                {
+                    name: 'Palworld T-Shirt',
+                    price: '$20',
+                    image: 'Tshirt.jpg'},
+                {
+                    name: 'Palworld Mug',
+                    price: '$12',
+                    image: 'mug.jpg'
+                },
+                {
+                    name: 'Palworld Hoodie',
+                    price: '$35',
+                    image: 'hoodie.jpeg'
+                },
+                {
+                    name: 'Palworld Poster',
+                    price: '$10',
+                    image: 'poster.jpeg'
+                },
+                {
+                    name: 'Palworld Keychain',
+                    price: '$5',
+                    image: 'key.jpeg'
+                }
+            ];
+        });
+    </script>
+</body>
+
+</html>

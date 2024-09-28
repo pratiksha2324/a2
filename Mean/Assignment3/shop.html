@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-color: #f4f4f4;
+    }
+    
+    h1 {
+        background-color: #333;
+        color: #fff;
+        margin: 0;
+        padding: 20px 0;
+        margin-bottom: 50px;
+    }
+    
+    form {
+        display: inline-block;
+        text-align: left;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 400px;
+    }
+    
+    label {
+        display: block;
+        margin: 10px 0 5px 0;
+        font-size: 16px;
+        color: #333;
+        font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="number"],
+    select {
+        padding: 10px;
+        width: calc(100% - 22px); /* Adjust to fit the container */
+        margin: 5px 0 20px 0;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box; /* Ensures padding doesn't add to overall width */
+    }
+    
+    input[type="radio"] {
+        width: auto;
+        margin-right: 5px;
+    }
+    
+    .radio-group {
+        margin: 10px 0;
+    }
+    
+    button {
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        background-color: #333;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: block;
+        width: 100%; /* Button will span the full width of the form */
+        box-sizing: border-box;
+    }
+    
+    button:hover {
+        background-color: #555;
+    }
+</style>    
+</head>
+<body ng-app="cartApp" ng-controller="CartController">
+    <h1>Shopping Cart</h1>
+    <form>
+        <label for="product">Product Name:</label>
+        <input type="text" ng-model="product.name" id="product" placeholder="Enter product name"><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" ng-model="product.quantity" id="quantity" placeholder="Enter product Quantity"><br>
+
+        <label for="payment">Payment Method:</label><br>
+        <input type="radio" ng-model="product.payment" value="Credit Card"> Credit Card<br>
+        <input type="radio" ng-model="product.payment" value="PayPal"> PayPal<br>
+        <input type="radio" ng-model="product.payment" value="Cash"> Cash<br>
+
+        <label for="delivery">Delivery Options:</label>
+        <select ng-model="product.delivery" multiple>
+            <option>Standard</option>
+            <option>Express</option>
+            <option>Next Day</option>
+            <option> Gift wrap</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        angular.module('cartApp', []).controller('CartController', function ($scope) {
+            $scope.product = {
+                delivery: 'Standard'
+            };
+        });
+    </script>
+</body>
+</html>
