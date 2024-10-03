@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            background-color: #751389;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            margin: 0 auto;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input[type="text"], select {
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+        .radio-group {
+            margin-bottom: 15px;
+        }
+        .radio-group label {
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #751389;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .summary {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body ng-app="shoppingApp" ng-controller="ShoppingController">
+    <div class="form-container">
+        <h1>Shopping Cart Form</h1>
+
+        <!-- Shopping Cart Form -->
+        <form name="shoppingForm" ng-submit="addToCart()" novalidate>
+            <!-- Item Name (Text Input) -->
+            <label for="itemName">Item Name:</label>
+            <input type="text" id="itemName" ng-model="itemName" placeholder="Enter item name" required>
+            
+            <!-- Item Category (Radio Buttons) -->
+            <div class="radio-group">
+                <label>Item Category:</label><br>
+                <label><input type="radio" ng-model="category" value="Electronics" required> Electronics</label>
+                <label><input type="radio" ng-model="category" value="Clothing"> Clothing</label>
+                <label><input type="radio" ng-model="category" value="Groceries"> Groceries</label>
+            </div>
+
+            <!-- Quantity (Dropdown) -->
+            <label for="quantity">Quantity:</label>
+            <select id="quantity" ng-model="quantity" required>
+                <option value="" disabled selected>Select quantity</option>
+                <option ng-repeat="num in [1,2,3,4,5,6,7,8,9,10]">{{ num }}</option>
+            </select>
+
+            <!-- Shipping Option (Radio Buttons) -->
+            <div class="radio-group">
+                <label>Shipping Option:</label><br>
+                <label><input type="radio" ng-model="shipping" value="Standard" required> Standard Shipping</label>
+                <label><input type="radio" ng-model="shipping" value="Express"> Express Shipping</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" ng-disabled="shoppingForm.$invalid">Add to Cart</button>
+        </form>
+
+        <!-- Cart Summary -->
+        <div class="summary" ng-if="cart.length > 0">
+            <h2>Cart Summary</h2>
+            <ul>
+                <li ng-repeat="item in cart track by $index">
+                    {{ item.itemName }} - {{ item.category }} - Quantity: {{ item.quantity }} - Shipping: {{ item.shipping }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        angular.module('shoppingApp', []).controller('ShoppingController', function ($scope) {
+            $scope.cart = [];
+
+            // Add to Cart function
+            $scope.addToCart = function() {
+                // Check if all form fields are filled
+                if ($scope.itemName && $scope.category && $scope.quantity && $scope.shipping) {
+                    // Add item to the cart
+                    $scope.cart.push({
+                        itemName: $scope.itemName,
+                        category: $scope.category,
+                        quantity: $scope.quantity,
+                        shipping: $scope.shipping
+                    });
+
+                    // Reset form fields
+                    $scope.itemName = '';
+                    $scope.category = '';
+                    $scope.quantity = '';
+                    $scope.shipping = '';
+                    $scope.shoppingForm.$setPristine();
+                } else {
+                    alert("Please fill out all fields!");
+                }
+            };
+        });
+    </script>
+</body>
+</html>

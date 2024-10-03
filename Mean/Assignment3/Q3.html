@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Array Elements</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f0f0f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            background-color:#751389;
+            color: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        input {
+            padding: 10px;
+            width: calc(100% - 20px);
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #333;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            background-color: #751389;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        p {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            padding: 10px;
+            list-style-type: disc;
+            text-align: left;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        li {
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f5;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #ddd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            input, button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body ng-app="arrayApp" ng-controller="ArrayController">
+    <div class="container">
+        <h1>Array Elements</h1>
+        <input type="text" ng-model="newItem" placeholder="Enter new item">
+        <button ng-click="addItem()">Add Item</button>
+        <p class="error" ng-if="!array.length">No elements in array</p>
+        <ul>
+            <li ng-repeat="item in array track by $index">{{ item }}</li>
+        </ul>
+    </div>
+
+    <script>
+        angular.module('arrayApp', []).controller('ArrayController', function ($scope) {
+            $scope.array = [];
+            $scope.addItem = function() {
+                if ($scope.newItem) {
+                    $scope.array.push($scope.newItem);
+                    $scope.newItem = '';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

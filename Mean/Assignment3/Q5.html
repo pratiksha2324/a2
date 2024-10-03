@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #e9ecef;
+        }
+        h1 {
+            background-color: #751389;
+            color: #fff;
+            margin: 0;
+            padding: 20px 0;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            margin: auto;
+            width: 60%;
+            border-collapse: collapse;
+            font-size: 18px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px 25px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #9c1d95;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e9e9e9;
+            transition: background-color 0.3s ease;
+        }
+        td {
+            color: #333;
+        }
+        /* Style for table borders */
+        table {
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+        /* Add a subtle box-shadow and rounded corners */
+        table {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body ng-app="studentApp" ng-controller="StudentController">
+    <h1>Student Data</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Marks</th>
+        </tr>
+        <tr ng-repeat="student in students">
+            <td>{{ student.name }}</td>
+            <td>{{ student.marks }}</td>
+        </tr>
+    </table>
+
+    <script>
+        angular.module('studentApp', []).controller('StudentController', function ($scope) {
+            $scope.students = [
+                { name: 'Pratiksha', marks: 85 },
+                { name: 'Prerna', marks: 90 },
+                { name: 'Nancy', marks: 75 },
+                { name: 'Rutuja', marks: 65 },
+                { name: 'Saloni', marks: 80 }
+            ];
+        });
+    </script>
+</body>
+</html>

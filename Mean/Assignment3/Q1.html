@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            background-color: #751389;
+            color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px 10px 0 0;
+            font-size: 24px;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 300px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        input {
+            padding: 10px;
+            width: calc(100% - 20px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #751389;
+            outline: none;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .result {
+            font-weight: bold;
+            color: #751389;
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 20px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body ng-app="currencyApp" ng-controller="CurrencyController">
+    <div class="container">
+        <h1>Currency Calculator</h1>
+        <label for="inr">Enter Amount in INR:</label>
+        <input type="number" ng-model="inr" id="inr">
+        
+        <p>Dollars: <span class="result">{{ inr * 0.012 | number:2 }}</span></p>
+        <p>Euros: <span class="result">{{ inr * 0.011 | number:2 }}</span></p>
+    </div>
+
+    <script>
+        angular.module('currencyApp', []).controller('CurrencyController', function ($scope) {
+            $scope.inr = 0;
+        });
+    </script>
+</body>
+</html>

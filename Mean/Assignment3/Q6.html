@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Container styling */
+        /* Container styling */
+.container {
+    max-width: 1000px; /* Increase max-width to 1000px */
+    margin: 20px auto; /* Reduced margin top/bottom for a tighter fit */
+    padding: 40px; /* Increased padding for more space inside the container */
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+}
+
+        .container:hover {
+            transform: scale(1.01);
+        }
+
+        /* Page header styling */
+        h1 {
+            text-align: center;
+            color: #cf11a6;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Logo styling */
+        img {
+            width: 120px;
+            display: block;
+            margin: 0 auto 20px auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        img:hover {
+            transform: rotate(360deg);
+        }
+
+        /* Buttons styling */
+        button {
+            background-color: #751389;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form input fields */
+        input[type="text"], select {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="text"]:focus, select:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Submit button */
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            font-size: 1em;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.2s ease;
+        }
+
+        /* Error and Success messages */
+        .error {
+            color: #d9534f;
+            font-size: 0.9em;
+            text-align: left;
+        }
+        .success {
+            color: #5cb85c;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Flex container for components */
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* Form and records container */
+        .form-container, .details-container {
+            width: 100%; 
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-container:hover, .details-container:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Multiple select box */
+        select {
+            height: 120px; 
+            overflow-y: auto; 
+        }
+
+        /* Placeholder text styling */
+        input::placeholder {
+            font-style: italic;
+            color: #aaa;
+        }
+
+    </style>
+</head>
+<body ng-app="userApp" ng-controller="UserController">
+
+    <div class="container">
+        <img src="logo.png" alt="College Logo">
+        <h1>User Registration</h1>
+    
+        <!-- Buttons to switch components -->
+        <div style="text-align: center;">
+            <button ng-click="showComponent('registration')" ng-class="{'active': activeComponent === 'registration'}">User Registration</button>
+            <button ng-click="showComponent('records')" ng-class="{'active': activeComponent === 'records'}">User Records</button>
+        </div>
+
+        <div class="flex-container">
+            <!-- User Registration Component -->
+            <div class="form-container" ng-show="activeComponent === 'registration'">
+                <form name="userForm" ng-submit="addUser()" novalidate>
+                    <div class="form-group">
+                        <label for="user_id">User ID:</label>
+                        <input type="text" id="user_id" name="user_id" ng-model="newUser.id" required placeholder="Enter User ID">
+                        <p class="error" ng-show="userForm.user_id.$touched && userForm.user_id.$error.required">User ID is required.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" ng-model="newUser.name" required placeholder="Enter Full Name">
+                        <p class="error" ng-show="userForm.name.$touched && userForm.name.$error.required">Name is required.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" ng-model="newUser.address" placeholder="Enter Address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dept">Department:</label>
+                        <select id="dept" name="dept" ng-model="newUser.dept" multiple required>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry </option>
+                            <option value="Psychology">Psychology</option>
+                            <option value="Biotechnology">Biotechnology</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course">Course:</label>
+                        <select id="course" name="course" ng-model="newUser.course" multiple required>
+                            <option value="Bachelors">Bachelors</option>
+                            <option value="Masters">Masters</option>
+                            <option value="PhD">PhD</option>
+                            <option value="Diploma">Diploma</option>
+                        </select>
+                    </div>
+
+                    <input type="submit" value="Submit" ng-disabled="userForm.$invalid">
+                    <p class="success" ng-show="successMessage">{{ successMessage }}</p>
+                </form>
+            </div>
+
+            <!-- User Records Component -->
+            <div class="details-container" ng-show="activeComponent === 'records'">
+                <h2>User Records</h2>
+                <p ng-if="users.length === 0">No records found.</p>
+                <table ng-if="users.length > 0">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Department</th>
+                            <th>Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in users">
+                            <td>{{user.id}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.address}}</td>
+                            <td>{{user.dept}}</td>
+                            <td>{{user.course}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        angular.module('userApp', []).controller('UserController', function ($scope) {
+            $scope.users = []; 
+            $scope.newUser = {};
+            $scope.successMessage = ''; 
+            $scope.activeComponent = 'registration'; 
+    
+            // Function to show the selected component
+            $scope.showComponent = function(component) {
+                $scope.activeComponent = component;
+                $scope.successMessage = '';
+            };
+    
+            // Add new user function
+            $scope.addUser = function () {
+                if ($scope.userForm.$valid) {
+                    $scope.users.push({
+                        id: $scope.newUser.id,
+                        name: $scope.newUser.name,
+                        address: $scope.newUser.address,
+                        dept: $scope.newUser.dept.join(', '),
+                        course: $scope.newUser.course.join(', ')
+                    });
+    
+                    // Set success message
+                    $scope.successMessage = "User added successfully!";
+                    
+                    // Reset the newUser model
+                    $scope.newUser = {
+                        id: '',
+                        name: '',
+                        address: '',
+                        dept: [],
+                        course: []
+                    };
+    
+                    // Reset the form state
+                    $scope.userForm.$setPristine();
+                    $scope.userForm.$setUntouched();
+                }
+            };
+        });
+    </script>
+    
