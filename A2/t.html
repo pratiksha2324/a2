@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Menu-Driven Program</title>
+</head>
+<body>
+    <h1>JavaScript Menu-Driven Program</h1>
+    
+    <!-- Dropdown for selecting the operation -->
+    <label for="operation">Choose an operation:</label>
+    <select id="operation">
+        <option value="1">Check if an Array Contains a Specified Value</option>
+        <option value="2">Insert Item in an Array</option>
+        <option value="3">Append an Object to an Array</option>
+        <option value="4">Check if an Object is an Array</option>
+        <option value="5">Empty an Array</option>
+        <option value="6">Add Element to Start of an Array</option>
+        <option value="7">Remove Duplicates from Array</option>
+        <option value="8">Merge Two Arrays and Remove Duplicate Items</option>
+        <option value="9">Sort Array of Objects by Property Values</option>
+    </select>
+    
+    <!-- Input fields for user interaction -->
+    <div id="inputs">
+        <!-- Input fields will be generated dynamically based on the selected operation -->
+    </div>
+    
+    <!-- Button to execute the selected operation -->
+    <button onclick="executeOperation()">Execute</button>
+    
+    <!-- Div to display the result -->
+    <div id="result"></div>
+    
+    <!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

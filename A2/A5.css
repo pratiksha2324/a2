@@ -1,0 +1,96 @@
+/* Google Font CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #e0f7fa, #d1d5f5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 40%; /* Adjusted the width to make the container smaller */
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 25px; /* Reduced padding slightly */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+    color: #2a9d8f;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.input-box {
+    margin: 16px 0;
+}
+
+.input-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ced6e0;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #f1f5f9;
+    transition: border 0.3s ease;
+}
+
+.input-box input:focus {
+    border-color: #2a9d8f;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2a9d8f;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #21867a;
+    transform: translateY(-3px);
+}
+
+#comparison-output {
+    margin-top: 25px;
+    padding: 15px;
+    font-size: 16px;
+    background: #f1f5f9;
+    border: 2px solid #ced6e0;
+    border-radius: 8px;
+    color: #444;
+    transition: border 0.3s ease;
+}
+
+#comparison-output:hover {
+    border-color: #2a9d8f;
+}

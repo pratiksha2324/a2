@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Dimension Getter</title>
+    <style>
+       /* General Styling */
+/* Body Styling */
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #cfd9df, #1f2627);
+    padding: 0 20px;
+    font-family: "Poppins", sans-serif;
+    color: #2d3436;
+    transition: background-color 0.5s ease;
+}
+
+/* Form Styling */
+form {
+    max-width: 550px;
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+
+form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Title */
+form h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #4671EA;
+    font-weight: 600;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Input Box Styling */
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-box input[type="file"] {
+    border: 2px dashed #bfbfbf;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 12px;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+    width: 100%;
+    max-width: 100%;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    outline: none;
+}
+
+.input-box input[type="file"]:hover {
+    border-color: #4671EA;
+    background-color: #f1f5f9;
+}
+
+/* Image Styling */
+.input-box img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeInImage 0.7s forwards;
+}
+
+.input-box img:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Button Styling */
+.input-box button {
+    width: 100%;
+    padding: 12px;
+    color: #fff;
+    background: #4671EA;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.input-box button:hover {
+    background: #1748cf;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Result Box Styling */
+.result {
+    color: #1748cf;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: border-color 0.3s ease, background-color 0.4s ease;
+    position: relative;
+}
+
+.result:hover {
+    border-color: #4671EA;
+    background-color: #eef2f7;
+}
+
+/* Animation for Title Fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation for Image Fade-in */
+@keyframes fadeInImage {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    form {
+        padding: 20px;
+    }
+    form h1 {
+        font-size: 24px;
+    }
+    .input-box button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 15px;
+    }
+    form h1 {
+        font-size: 20px;
+    }
+    .input-box button {
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <form>
+        <h1>Get Image Dimensions</h1>
+        <div class="input-box">
+            <input type="file" id="fileInput" />
+            <img id="image" src="" alt="Image will appear here" />
+            <button type="button" id="getDimensions">Get Dimensions</button>
+            <div class="result" id="result"></div>
+        </div>
+    </form>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const image = document.getElementById('image');
+        const getDimensionsButton = document.getElementById('getDimensions');
+        const result = document.getElementById('result');
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    image.src = reader.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        getDimensionsButton.addEventListener('click', () => {
+            if (image.src) {
+                const img = new Image();
+                img.src = image.src;
+                img.onload = () => {
+                    result.textContent = `Width: ${img.width}px, Height: ${img.height}px`;
+                };
+            } else {
+                result.textContent = 'Please upload an image first.';
+            }
+        });
+    </script>
+</body>
+</html>

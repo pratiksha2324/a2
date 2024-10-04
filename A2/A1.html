@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validations</title>
+    <link rel="stylesheet" href="A1.css">
+    <style>
+        .error {
+            color: red ;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <form id="loginForm">
+            <h2>Login</h2>
+            <div class="input-field">
+                <input type="text" id="username" required>
+                <label for="username">Enter your email</label>
+                <div id="usernameError" class="error"></div>
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" required>
+                <label for="password">Enter your password</label>
+                <div id="passwordError" class="error"></div>
+            </div>
+            <div class="forget">
+                <label for="remember">
+                    <input type="checkbox" id="remember">
+                    <p>Remember me</p>
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit">Log In</button>
+            <div class="register">
+                <p>Don't have an account? <a href="#">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Clear previous error messages
+            document.getElementById('usernameError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            let isValid = true;
+
+            // Username validation: only a-z, A-Z, 0-9, and dots are allowed
+            const usernameRegex = /^[a-zA-Z0-9.]+$/;
+            if (!usernameRegex.test(username)) {
+                document.getElementById('usernameError').textContent = 'Invalid username. Only letters, numbers, and dots are allowed.';
+                isValid = false;
+            }
+
+            // Password validation: minimum 8 characters, first letter capital
+            const passwordRegex = /^[A-Z][a-zA-Z0-9!@#$%^&*]{7,}$/;
+            if (!passwordRegex.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long and start with a capital letter.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully!');
+                // Optionally, here you can send the data to the server or perform further actions.
+            }
+        });
+    </script>
+</body>
+</html>

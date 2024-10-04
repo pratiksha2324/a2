@@ -1,0 +1,106 @@
+/* Google Font CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #e0f7fa, #80deea);
+}
+
+form {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+}
+
+.input-box .input {
+  width: 100%;
+  padding: 12px 50px 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-box .input:focus {
+  border-color: #00796b;
+}
+
+.input-box .email-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #00796b;
+}
+
+.input-box .error-icon, 
+.input-box .passed-icon {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+form.valid .passed-icon {
+  display: block;
+  color: #4caf50;
+}
+
+form.error .error-icon {
+  display: block;
+  color: #e74c3c;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background: #00796b;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background: #004d40;
+  transform: translateY(-2px);
+}
+
+.text {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e74c3c; /* Default color for error */
+}
+
+form.valid .text {
+  color: #4caf50; /* Color for valid email */
+}

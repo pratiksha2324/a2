@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+    <link rel="stylesheet" href="A7.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Array Operations Menu</h2>
+        <form id="arrayForm">
+            <select id="operation" onchange="updateFormFields()">
+                <option value="">Select an Operation</option>
+                <option value="check">Check if Array Contains a Value</option>
+                <option value="insert">Insert Item in Array</option>
+                <option value="append">Append Object to Array</option>
+                <option value="isArray">Check if Array is an Array</option>
+                <option value="empty">Empty an Array</option>
+                <option value="addStart">Add Element to Start of Array</option>
+                <option value="removeDuplicates">Remove Duplicates From Array</option>
+                <option value="merge">Merge Two Arrays and Remove Duplicates</option>
+                <option value="sort">Sort Array of Objects by Property Values</option>
+            </select>
+
+            <div id="arrayField" class="input-field">
+                <label for="arrayInput"></label>
+                <input type="text" id="arrayInput" placeholder="Array (comma separated)">
+            </div>
+
+            <div id="valueField" class="input-field">
+                <label for="valueToCheck"></label>
+                <input type="text" id="valueToCheck" placeholder="Value to Check">
+            </div>
+
+            <div id="insertField" class="input-field">
+                <label for="itemToInsert"></label>
+                <input type="text" id="itemToInsert" placeholder="Item to Insert">
+            </div>
+
+            <div id="appendField" class="input-field">
+                <label for="objectToAppend"></label>
+                <input type="text" id="objectToAppend" placeholder="Object to Append (JSON format)">
+            </div>
+
+            <div id="addStartField" class="input-field">
+                <label for="elementToAdd"></label>
+                <input type="text" id="elementToAdd" placeholder="Element to Add to Start">
+            </div>
+
+            <div id="mergeField" class="input-field">
+                <label for="arrayToMerge"></label>
+                <input type="text" id="arrayToMerge" placeholder="Array to Merge (comma separated)">
+            </div>
+
+            <div id="sortField" class="input-field">
+                <label for="propertyToSortBy"></label>
+                <input type="text" id="propertyToSortBy" >
+            </div>
+
+            <button type="button" onclick="performArrayOperations()">Perform Operation</button>
+        </form>
+        <div id="result" class="result-box"></div>
+    </div>
+    <script src="A7.js"></script>
+</body>
+</html>

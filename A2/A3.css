@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #f5af19, #f12711);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: background 0.5s ease;
+}
+
+.container {
+    width: 85%;
+    max-width: 950px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px 60px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+.container:hover {
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+}
+
+.form-container {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ff512f;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.input-box {
+    height: 55px;
+    width: 100%;
+    margin: 20px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-box input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    padding: 0 20px;
+    transition: border-color 0.3s ease;
+    border-radius: 0;
+}
+
+.input-box input:focus {
+    border-color: #ff512f;
+    background: rgba(255, 81, 47, 0.05);
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    font-size: 18px;
+    color: #ff512f;
+}
+
+.button {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.button input[type="submit"] {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: none;
+    padding: 15px 0;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    cursor: pointer;
+    transition: background 0.4s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+.button input[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    transform: translateY(-5px);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding-bottom: 20px;
+    margin-top: 40px;
+}
+
+.card {
+    background: #fefefe;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.5s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ff512f;
+    transition: color 0.3s ease;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.card h3:hover {
+    color: #ff9966;
+}
+
+.card .delete-btn {
+    background: #ff512f;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    transition: background 0.3s ease;
+}
+
+.card .delete-btn:hover {
+    background: #ff9966;
+}
+
+.error-message {
+    color: #ff3b3b;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+    font-weight: bold;
+    text-align: left;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.card {
+    animation: fade-in 0.5s ease-out;
+}

@@ -1,0 +1,105 @@
+/* Google Font CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #e0f7fa, #a7ffeb);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    width: 100%;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #00796b;
+    margin-bottom: 20px;
+}
+
+input[type="number"], input[type="text"], select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+input[type="number"]:focus, input[type="text"]:focus, select:focus {
+    border-color: #00796b;
+}
+
+button {
+    background: #00796b;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+button:hover {
+    background: #004d40;
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+#even-odd-output, #calculator-output, #replace-output, #sort-output {
+    margin-top: 15px;
+    padding: 12px;
+    background: #e0f2f1;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #004d40;
+    display: none; /* Hidden by default, display when content is available */
+}
+
+section:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    input[type="number"], input[type="text"], select {
+        font-size: 14px;
+    }
+}
